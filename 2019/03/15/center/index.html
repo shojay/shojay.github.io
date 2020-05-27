@@ -46,27 +46,31 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://shojay.github.io/index.html">
+  <meta name="description" content="导读总结一下水平和垂直方向居中的方法 水平居中1) 若是行内元素, 给其父元素设置 text-align:center,即可实现行内元素水平居中. 2) 若是块级元素, 该元素设置 margin:0 auto即可. 3) 若子元素包含 float:left 属性, 为了让子元素水平居中, 则可让父元素宽度设置为fit-content,并且配合margin, 作如下设置: 123456.parent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS水平垂直居中布局的方法">
+<meta property="og:url" content="https://shojay.github.io/2019/03/15/center/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="导读总结一下水平和垂直方向居中的方法 水平居中1) 若是行内元素, 给其父元素设置 text-align:center,即可实现行内元素水平居中. 2) 若是块级元素, 该元素设置 margin:0 auto即可. 3) 若子元素包含 float:left 属性, 为了让子元素水平居中, 则可让父元素宽度设置为fit-content,并且配合margin, 作如下设置: 123456.parent">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-03-15T13:47:19.000Z">
+<meta property="article:modified_time" content="2020-05-27T13:58:47.239Z">
 <meta property="article:author" content="Shojay">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://shojay.github.io/">
+<link rel="canonical" href="https://shojay.github.io/2019/03/15/center/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false
+    isHome: false,
+    isPost: true
   };
 </script>
 
-  <title>Hexo</title>
+  <title>CSS水平垂直居中布局的方法 | Hexo</title>
   
 
 
@@ -161,10 +165,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
     <link itemprop="mainEntityOfPage" href="https://shojay.github.io/2019/03/15/center/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -178,8 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/15/center/" class="post-title-link" itemprop="url">CSS水平垂直居中布局的方法</a>
+          CSS水平垂直居中布局的方法
         </h1>
 
         <div class="post-meta">
@@ -210,7 +213,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h1><p>总结一下水平和垂直方向居中的方法</p>
+        <h1 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h1><p>总结一下水平和垂直方向居中的方法</p>
 <h1 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h1><p>1) 若是行内元素, 给其父元素设置 text-align:center,即可实现行内元素水平居中.</p>
 <p>2) 若是块级元素, 该元素设置 margin:0 auto即可.</p>
 <p>3) 若子元素包含 float:left 属性, 为了让子元素水平居中, 则可让父元素宽度设置为fit-content,并且配合margin, 作如下设置:</p>
@@ -286,175 +289,33 @@
 <li><a href="http://www.w3cplus.com/css/elements-horizontally-center-with-css.html" target="_blank" rel="noopener">六种实现元素水平居中_水平居中, 垂直居中 教程_大漠</a></li>
 </ul>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://shojay.github.io/2019/02/10/post-one/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Shojay">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/10/post-one/" class="post-title-link" itemprop="url">Hexo搭建个人博客到gitPage</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-02-10 19:42:41" itemprop="dateCreated datePublished" datetime="2019-02-10T19:42:41+08:00">2019-02-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-27 21:58:35" itemprop="dateModified" datetime="2020-05-27T21:58:35+08:00">2020-05-27</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Hexo简介"><a href="#Hexo简介" class="headerlink" title="Hexo简介"></a>Hexo简介</h2><p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。大家可以进入</p>
-<p>进行详细查看，因为Hexo的创建者是台湾人，对中文的支持很友好，可以选择中文进行查看。</p>
-<p>教程分三个部分，</p>
-<p>第一部分：hexo的初级搭建还有部署到github page上，以及个人域名的绑定。<br>第二部分：hexo的基本配置，更换主题，实现多终端工作，以及在coding page部署实现国内外分流<br>第三部分：hexo添加各种功能，包括搜索的SEO，阅读量统计，访问量统计和评论系统等。</p>
-<h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><p>hexo的初级搭建还有部署到github page上，以及个人域名的绑定。</p>
-<h3 id="Hexo搭建步骤"><a href="#Hexo搭建步骤" class="headerlink" title="Hexo搭建步骤"></a>Hexo搭建步骤</h3><ol>
-<li>安装Git</li>
-<li>安装Node.js</li>
-<li>安装Hexo</li>
-<li>GitHub创建个人仓库</li>
-<li>生成SSH添加到GitHub</li>
-<li>将hexo部署到GitHub</li>
-<li>设置个人域名</li>
-<li>发布文章</li>
-</ol>
-<h4 id="1-安装Git"><a href="#1-安装Git" class="headerlink" title="1.安装Git"></a>1.安装Git</h4><p>Git是目前世界上最先进的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。也就是用来管理你的hexo博客文章，上传到GitHub的工具。Git非常强大，我觉得建议每个人都去了解一下。廖雪峰老师的Git教程写的非常好，大家可以了解一下。Git教程</p>
-<p>windows：到git官网上下载 git,下载后会有一个Git Bash的命令行工具，以后就用这个工具来使用git。</p>
-<p>linux：对linux来说实在是太简单了，因为最早的git就是在linux上编写的，只需要一行代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
-
-<p>安装好后，用<code>git --version</code> 来查看一下版本</p>
-<h4 id="2-安装Nodejs"><a href="#2-安装Nodejs" class="headerlink" title="2.安装Nodejs"></a>2.安装Nodejs</h4><p>Hexo是基于nodeJS编写的，所以需要安装一下nodeJs和里面的npm工具。</p>
-<p>windows：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">nodejs</a>选择LTS版本就行了。</p>
-<p>linux：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs </span><br><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
-
-<p>安装完后，打开命令行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-
-<p>检查一下有没有安装成功</p>
-<p>顺便说一下，windows在git安装完后，就可以直接使用git bash来敲命令行了，不用自带的cmd，cmd有点难用。</p>
-<h4 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3. 安装hexo"></a>3. 安装hexo</h4><p>前面git和nodejs安装好后，就可以安装hexo了，你可以先创建一个文件夹blog，然后<code>cd</code>到这个文件夹下（或者在这个文件夹下直接右键git bash打开）。</p>
-<p>输入命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>依旧用<code>hexo -v</code>查看一下版本</p>
-<p>至此就全部安装完了。</p>
-<p>接下来初始化一下hexo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init myblog</span><br></pre></td></tr></table></figure>
-
-<p>这个myblog可以自己取什么名字都行，然后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd myblog &#x2F;&#x2F;进入这个myblog文件夹</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>新建完成后，指定文件夹目录下有：</p>
-<ul>
-<li>node_modules: 依赖包</li>
-<li>public：存放生成的页面</li>
-<li>scaffolds：生成文章的一些模板</li>
-<li>source：用来存放你的文章</li>
-<li>themes：主题</li>
-<li>** _config.yml: 博客的配置文件**</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>打开hexo的服务，在浏览器输入localhost:4000就可以看到你生成的博客了。</p>
-<h4 id="4-GitHub创建个人仓库"><a href="#4-GitHub创建个人仓库" class="headerlink" title="4. GitHub创建个人仓库"></a>4. GitHub创建个人仓库</h4><p>首先，你先要有一个GitHub账户，去注册一个吧。</p>
-<p>注册完登录后，在GitHub.com中看到一个New repository，新建仓库</p>
-<p><img src="/2019/02/10/post-one/img1.png" alt="img1"></p>
-<p>创建一个和你用户名相同的仓库，后面加.github.io，只有这样，将来要部署到GitHub page的时候，才会被识别，也就是xxxx.github.io，其中xxxx就是你注册GitHub的用户名。我这里是已经建过了。</p>
-<p>点击create repository.</p>
-<h4 id="5-生成SSH添加到GitHub"><a href="#5-生成SSH添加到GitHub" class="headerlink" title="5. 生成SSH添加到GitHub"></a>5. 生成SSH添加到GitHub</h4><p>回到你的git bash中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot; </span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
-
-<p>这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱。这样GitHub才能知道你是不是对应它的账户。</p>
-<p>可以用以下两条，检查一下你有没有输对</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br></pre></td></tr></table></figure>
-
-<p>然后创建SSH,一路回车</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
-
-<p>这个时候它会告诉你已经生成了.ssh的文件夹。在你的电脑中找到这个文件夹。</p>
-<p>ssh，简单来讲，就是一个秘钥，其中，id_rsa是你这台电脑的私人秘钥，不能给别人看的，id_rsa.pub是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。</p>
-<p>而后在GitHub的setting中，找到SSH keys的设置选项，点击New SSH key<br>把你的id_rsa.pub里面的信息复制进去</p>
-<p>在gitbash中，查看是否成功</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-<h4 id="6-将hexo部署到GitHub"><a href="#6-将hexo部署到GitHub" class="headerlink" title="6. 将hexo部署到GitHub"></a>6. 将hexo部署到GitHub</h4><p>这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 <code>_config.yml</code>，翻到最后，修改为<br>YourgithubName就是你的GitHub账户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy: </span><br><span class="line">  type: git  </span><br><span class="line">  repo: https:&#x2F;&#x2F;github.com&#x2F;YourgithubName&#x2F;YourgithubName.github.io.git </span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<p>这个时候需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>其中 hexo clean清除了你之前生成的东西，也可以不加。<br>hexo generate 顾名思义，生成静态文章，可以用 hexo g缩写<br>hexo deploy 部署文章，可以用hexo d缩写</p>
-<p>注意deploy时可能要你输入username和password。</p>
-<p>得到下图就说明部署成功了，过一会儿就可以在<a href="http://yourname.github.io" target="_blank" rel="noopener">http://yourname.github.io</a> 这个网站看到你的博客了！！</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/02/10/post-one/" rel="prev" title="Hexo搭建个人博客到gitPage">
+      <i class="fa fa-chevron-left"></i> Hexo搭建个人博客到gitPage
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
 
   </div>
-
-  
-
 
 
           </div>
@@ -505,6 +366,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导读"><span class="nav-number">1.</span> <span class="nav-text">导读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#水平居中"><span class="nav-number">2.</span> <span class="nav-text">水平居中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#垂直居中"><span class="nav-number">3.</span> <span class="nav-text">垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单行文本"><span class="nav-number">3.1.</span> <span class="nav-text">单行文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行内块级元素"><span class="nav-number">3.2.</span> <span class="nav-text">行内块级元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素高度不定"><span class="nav-number">3.3.</span> <span class="nav-text">元素高度不定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
