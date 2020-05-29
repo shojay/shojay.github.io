@@ -165,6 +165,142 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://shojay.github.io/2019/05/29/git-usage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shojay">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shojay Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/29/git-usage/" class="post-title-link" itemprop="url">git_usage</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-05-29 23:44:22" itemprop="dateCreated datePublished" datetime="2019-05-29T23:44:22+08:00">2019-05-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-为什么使用Git"><a href="#1-为什么使用Git" class="headerlink" title="1.为什么使用Git"></a>1.为什么使用Git</h2><p>版本控制</p>
+<p>什么是版本控制？下面的场景是一种版本控制的类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.毕业论文_初稿.doc</span><br><span class="line">2.毕业论文_修改1.doc</span><br><span class="line">3.毕业论文_修改2.doc</span><br><span class="line">4.毕业论文_修改3.doc</span><br><span class="line">5.毕业论文_完整版1.doc</span><br><span class="line">6.毕业论文_完整版2.doc</span><br><span class="line">7.毕业论文_完整版3.doc</span><br><span class="line">8.毕业论文_最终版1.doc</span><br><span class="line">9.毕业论文_最终版2.doc</span><br><span class="line">10.毕业论文_死也不改版.doc</span><br></pre></td></tr></table></figure>
+
+<p>这种方式的缺点：</p>
+<p>多个文件，保留所有版本时，需要为每个版本保存一个文件…<br>协同操作，多人协同操作时，需要将文件打包发来发去…<br>容易丢失，被删除意味着永远失去…<br>为了解决上述问题，Git便应运而生 ，主要用于版本控制，方便协同开发。</p>
+<p>Git本身完全可以做到版本控制，但其所有内容以及版本记录只能保存在本机，如果想要将文件内容以及版本记录同时保存在远程，则需要结合GitHub（GitLab）来使用。使用场景：</p>
+<p>无GitHub：在本地 .git 文件夹内维护历时文件<br>有GitHub：在本地 .git 文件夹内维护历时文件，同时也将历时文件托管在远程仓库.</p>
+<h2 id="2-Git初始化及基本配置"><a href="#2-Git初始化及基本配置" class="headerlink" title="2.Git初始化及基本配置"></a>2.Git初始化及基本配置</h2><p><strong>（1）在本地创建工作目录</strong></p>
+<p> <strong>git init</strong></p>
+<p>初始化完成后，在刚开始创建的目录下会有.git目录生成，这个就是git仓库。Git相关文件以及版本都将保存在该文件夹中，通过Git命令可以将所有版本保存在 .git 文件中 。git仓库生成后会自动创建第一个分支master，指针指向master分支</p>
+<p><strong>（2）配置user信息</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &#39;shojay&#39;</span><br><span class="line">git config --global user.email &#39;297876668@qq.com&#39;</span><br></pre></td></tr></table></figure>
+
+<p>注意config的三个作用域:–local、–global、–system</p>
+<ul>
+<li>缺省等同于local</li>
+<li>–local：只对仓库有效</li>
+<li>–global：对登录用户所有仓库有效（一般使用这个）</li>
+<li>–system:对系统所有用户有效（很少使用）</li>
+</ul>
+<p><strong>（3）显示config的配置</strong></p>
+<p> <strong>git config –list –global</strong></p>
+<p><strong>（4）清除设置 –unset</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git config --unset --local user.name</span><br><span class="line"> </span><br><span class="line"> git config --unset --global user.name</span><br><span class="line"> </span><br><span class="line"> git config --unset --system user.name</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Git的基本操作"><a href="#3-Git的基本操作" class="headerlink" title="3.Git的基本操作"></a>3.Git的基本操作</h2><p><strong>（1）将工作区的文件添加到暂存区</strong></p>
+<p>​      <strong>git add .</strong></p>
+<p>​     <strong>git status</strong></p>
+<p>执行git add命令后工作区的文件 由红色变成绿色，被加入到缓存区</p>
+<p><strong>（2）将暂存区的内容提交到版本库的分支</strong></p>
+<p>​     <strong>git commit -m “创建第一个版本”</strong></p>
+<p><strong>（3）采用git log 查看提交的版本记录</strong></p>
+<p>   <strong>git log</strong></p>
+<p><strong>（4）相关命令注意点</strong></p>
+<p>  1.x版本：</p>
+<p>（1）.git add all可以提交未跟踪、修改和删除文件。<br>（2）.git add .可以提交未跟踪和修改文件，但是不处理删除文件。<br> 2.x版本</p>
+<p>  两者功能在提交类型方面是相同的。</p>
+<p> 区别在于git add .是对当前路径及其子路径下的变更有效，git add -A是整个仓库有效，其余的功能都一样。</p>
+<p> git add -u ：他仅监控已经被add的文件（即tracked file），他会将被修改的文件提交到暂存区。add -u 不会提交新文（untracked file）。（git add –update的缩写,提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)）</p>
+<p><strong>（5）常用命令总结</strong></p>
+<p>git init，初始化，表示即将对当前文件夹进行版本控制。<br>git status，查看Git当前状态，如：那些文件被修改过、那些文件还未提交到版本库等。<br>git add 文件名，将指定文件添加到版本库的暂存状态。<br>git commit -m ‘提交信息’，将暂存区的文件提交到版本库的分支。<br>git log，查看提交记录，即：历史版本记录</p>
+<h2 id="4-Git回滚功能基本使用"><a href="#4-Git回滚功能基本使用" class="headerlink" title="4.Git回滚功能基本使用"></a>4.Git回滚功能基本使用</h2><p><strong>（1）查看日志</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline</span><br></pre></td></tr></table></figure>
+
+<p><strong>(2) 回滚到某个版本上线</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard xxxxx</span><br></pre></td></tr></table></figure>
+
+<p><strong>（3）如果要回滚到最新版本呢？</strong></p>
+<p>此时git log是不能查看到的，需要用到git reflog</p>
+<p>  git log 查看的只是退回到当前版本后的log</p>
+<p> <strong>git reflog –oneline</strong></p>
+<p>回退到最新版本上线</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard xxxxx</span><br></pre></td></tr></table></figure>
+
+<p>举了git相关的回退功能，这里列举几个常用的进行实验</p>
+<p>  <strong>① git checkout</strong></p>
+<p>  <strong>git checkout作用于工作区，将工作区中中已修改的文件回退到之前状态。</strong></p>
+<p><strong>$ git checkout 修改的文件</strong></p>
+<p> 查看工作区被修改的文件修改的内容已经被删除。</p>
+<p><strong>② git reset head +文件名：回到未暂存的状态</strong></p>
+<p>继续修改文件 ….</p>
+<p><strong>git status</strong> 已修改的文件为红色</p>
+<p> git add . </p>
+<p>git status</p>
+<p>修改的文件红变绿</p>
+<p>此时想要他从暂存区回退到工作区使用git reset</p>
+<p>​    git reset HEAD + 文件 由暂存区到工作区中红色部分（修改后内容）</p>
+<p>​    使用git status查看状态</p>
+<p>可以回退到修改后状态</p>
+<p>  如果想要回退最原始状态，未修改的状态</p>
+<p>  使用 git checkout 修改的文件，</p>
+<p><strong>（5）常用命令小结</strong></p>
+<ul>
+<li><strong>git log</strong></li>
+<li><strong>git reset –hard 版本号</strong></li>
+<li><strong>git reflog</strong></li>
+<li><strong>git checkout</strong> </li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://shojay.github.io/2019/03/15/center/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -504,7 +640,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
