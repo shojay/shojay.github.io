@@ -212,7 +212,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init                                   &#x2F;&#x2F; 初始化项目结构信息，并生成package.json进行记录</span><br></pre></td></tr></table></figure>
 
 <p>注：如果不想手动填写信息一直回车的话就在命令后面加-y</p>
-<h2 id="三、目录结构"><a href="#三、目录结构" class="headerlink" title="三、目录结构"></a>三、目录结构</h2><p><img src="/2019/06/10/webpack-study-1/D:%5Cprojects%5Chexo%5CmyfirstHexo%5Csource_posts%5Cwebpack-study-1%5C1.png" alt="1"></p>
+<h2 id="三、目录结构"><a href="#三、目录结构" class="headerlink" title="三、目录结构"></a>三、目录结构</h2><p><img src="/2019/06/10/webpack-study-1/1.png" alt="1"></p>
 <p>其中build文件夹是打包后生成的目录，我们只需要手动创建<br><strong>app文件夹（用于存放源js、css文件）；<br>public文件夹（用于存放源html模板）；<br>webpack.config.js（webpack配置的默认文件）；</strong></p>
 <h2 id="四、创建并编写源代码文件"><a href="#四、创建并编写源代码文件" class="headerlink" title="四、创建并编写源代码文件"></a>四、创建并编写源代码文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Greeter.js</span><br><span class="line">module.exports &#x3D; function() &#123;</span><br><span class="line">    var greet &#x3D; document.createElement(&#39;div&#39;);</span><br><span class="line">    greet.textContent &#x3D; &quot;Hi there and greetings!&quot;;</span><br><span class="line">    return greet;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -246,12 +246,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
 
 <p>打包完成后，会根据配置中的output生成输出目录（本例中为在项目目录下输出build目录）</p>
-<p><img src="/2019/06/10/webpack-study-1/D:%5Cprojects%5Chexo%5CmyfirstHexo%5Csource_posts%5Cwebpack-study-1%5C2.png" alt="2"></p>
+<p><img src="/2019/06/10/webpack-study-1/2.png" alt="2"></p>
 <p>点开各个文件，可以看到熟悉的代码（鸡冻~）<br>其中，我们来看看index.html文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;ie&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Webpack test01&lt;&#x2F;title&gt;</span><br><span class="line">&lt;link href&#x3D;&quot;.&#x2F;css&#x2F;base.css&quot; rel&#x3D;&quot;stylesheet&quot;&gt;&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;root&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;.&#x2F;js&#x2F;bundle.js&quot;&gt;&lt;&#x2F;script&gt;&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>我们可以看到，相对比之前的模板文件，该文件已经自动为我们插入编译完的js、css文件<br>直接用浏览器打开打包生成的html文件，结果如下：</p>
-<p><img src="/2019/06/10/webpack-study-1/D:%5Cprojects%5Chexo%5CmyfirstHexo%5Csource_posts%5Cwebpack-study-1%5C3.png" alt="3"></p>
+<p><img src="/2019/06/10/webpack-study-1/3.png" alt="3"></p>
 
       
     </div>
