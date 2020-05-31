@@ -165,6 +165,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://shojay.github.io/2019/06/11/webpack-study-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shojay">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shojay Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/11/webpack-study-2/" class="post-title-link" itemprop="url">webpack(2)clean-webpack-plugin和source map</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-06-11 14:32:53" itemprop="dateCreated datePublished" datetime="2019-06-11T14:32:53+08:00">2019-06-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="clean-webpack-plugin插件"><a href="#clean-webpack-plugin插件" class="headerlink" title="clean-webpack-plugin插件"></a>clean-webpack-plugin插件</h2><p><strong>clean-webpack-plugin插件</strong>：一个webpack插件，用于在构建之前删除/清除构建文件夹。也就是说我们在安装使用这个插件之后，我们每次run build会自动帮我们清除之前的文件，再用打包生成的新的文件代替</p>
+<p>可能有人会说，每次打包完的文件如果同名不是会覆盖吗？那这个插件到底有什么意义？<br>的确如此，我们只要定好文件的命名，每次打包之后产生的文件便会自动覆盖之前的文件，但是在后续的开发过程中，我们不可能每个文件都定死名称，可能会在文件命名中添加hash值，或者说添加版本号等信息来进行迭代，此时，旧的文件没有清除，会造成无用文件的积累。而每当这个时候我们要去手动删除十分不便，因此我们可以使用该插件来帮我们完成这些。</p>
+<p>1、首先是通过npm安装，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install clean-webpack-plugin --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>2、在webpack配置文件中导入，然后再plugins中定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const CleanWebpackPlugin &#x3D; require(&#39;clean-webpack-plugin&#39;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins: [ </span><br><span class="line">    new CleanWebpackPlugin([&#39;build&#39;]) &#x2F;&#x2F;设置清除的目录</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>注意，括号中的文件名为要清除的目录名，如需要设置路径，可以参考如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins: [ </span><br><span class="line">    new CleanWebpackPlugin([&#39;build&#39;], &#123;</span><br><span class="line">        root: path.resolve(__dirname, &#39;..&#39;), </span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>3、运行npm run build</p>
+<p>原来的打包文件被自动删除了，说明插件开始工作</p>
+<h2 id="source-map功能"><a href="#source-map功能" class="headerlink" title="source map功能"></a>source map功能</h2><p>我们在打包完文件之后运行项目文件，此时如果存在错误（比如在源文件 main.js 出现了一个错误），那么它只会跟踪到打包完的 bundle.js 上，对于我们找说，如此跟踪错误来源毫无帮助。因此我们可以使用 JavaScript 自带的 source map 功能帮助我们追踪错误的位置</p>
+<p>该功能的使用非常简单，只需要我们定义devtool即可，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mode: &#39;production&#39;,</span><br><span class="line">devtool: &#39;cheap-source-map&#39;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mode: &#39;development&#39;</span><br><span class="line">devtool:  &#39;inline-source-map&#39;</span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是，不同mode下应该使用不同的devtool<br>定义完成之后，我们可以重新编译打包，当我们源代码存在错误时，可以发现浏览器开发者工具可以追踪到源文件以及相应错误位置，而没有使用source map，只会追踪到打包生成的文件中</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://shojay.github.io/2019/06/10/webpack-study-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -746,7 +825,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
