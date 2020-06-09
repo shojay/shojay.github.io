@@ -165,6 +165,77 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://shojay.github.io/2019/06/25/vue-note-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shojay">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shojay Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/25/vue-note-1/" class="post-title-link" itemprop="url">使用Vue过程随笔记录01</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-06-25 20:54:54" itemprop="dateCreated datePublished" datetime="2019-06-25T20:54:54+08:00">2019-06-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="组件命名问题"><a href="#组件命名问题" class="headerlink" title="组件命名问题"></a>组件命名问题</h1><h2 id="组件命名重复可能会造成死循环"><a href="#组件命名重复可能会造成死循环" class="headerlink" title="组件命名重复可能会造成死循环"></a>组件命名重复可能会造成死循环</h2><p>在使用Vue组件的过程中，要注意组件间的命名问题。举一个上面题目的例子，先列下同名组件的简单目录结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--components</span><br><span class="line">  --book.vue</span><br><span class="line">--views</span><br><span class="line">  --book.vue</span><br></pre></td></tr></table></figure>
+
+<p>当我们在views/book.vue中引入components/book.vue组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;book&gt;&lt;&#x2F;book&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">....</span><br><span class="line">import Book from &#39;..&#x2F;components&#x2F;book.vue&#39;;</span><br><span class="line">export default&#123;</span><br><span class="line">	name: &#39;book&#39;,</span><br><span class="line">	components: &#123;</span><br><span class="line">		Book</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样看好像没有什么问题，但是如果我们从后端获取数据遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;div&gt;这是一条数据&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;div v-for&#x3D;&#39;item in books&#39; :keys&#x3D;&#39;item.id&#39;&gt;</span><br><span class="line">			&lt;book :book&#x3D;&#39;item&#39;&gt;&lt;&#x2F;book&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">....</span><br><span class="line">import Book from &#39;..&#x2F;components&#x2F;book.vue&#39;;</span><br><span class="line">export default&#123;</span><br><span class="line">	name: &#39;book&#39;,</span><br><span class="line">	components: &#123;</span><br><span class="line">		Book</span><br><span class="line">	&#125;,</span><br><span class="line">	data() &#123;</span><br><span class="line">		return &#123;</span><br><span class="line">			books: []</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	created() &#123;</span><br><span class="line">		this.books &#x3D; ... &#x2F;&#x2F; 后端获取数据</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们运行的时候发现会一直循环渲染内容为“这是一条数据”的元素,这是为什么呢？因为我们引入的components下的book.vue在views/book.vue下使用命名成了跟其一致的名字book，那么在执行的时候就会以为是调用本身，所以就会一直这样递归循环下去，造成死循环，最后可以会造成电脑的死机。</p>
+<p>那么解决方法也显而易见，不要让它们同名就行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;div&gt;这是一条数据&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;div v-for&#x3D;&#39;item in books&#39; :keys&#x3D;&#39;item.id&#39;&gt;</span><br><span class="line">			&lt;v-book :book&#x3D;&#39;item&#39;&gt;&lt;&#x2F;v-book&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">....</span><br><span class="line">import VBook from &#39;..&#x2F;components&#x2F;book.vue&#39;;</span><br><span class="line">export default&#123;</span><br><span class="line">	name: &#39;book&#39;,</span><br><span class="line">	components: &#123;</span><br><span class="line">		VBook</span><br><span class="line">	&#125;,</span><br><span class="line">	data() &#123;</span><br><span class="line">		return &#123;</span><br><span class="line">			books: []</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	created() &#123;</span><br><span class="line">		this.books &#x3D; ... &#x2F;&#x2F; 后端获取数据</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总之，在对组件起名字的时候要注意同名的问题。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://shojay.github.io/2019/06/20/webpack-study-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1095,7 +1166,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
